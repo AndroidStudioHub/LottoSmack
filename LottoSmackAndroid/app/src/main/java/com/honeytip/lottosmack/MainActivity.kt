@@ -31,3 +31,10 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+/*UI button
+* Lotto max 7
+* - - - - - - -
+* Random number generate (1-50)
+* design
+* */
