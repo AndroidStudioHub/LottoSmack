@@ -27,46 +27,52 @@ fun MainScreen(navController: NavController, modifier: Modifier = Modifier) {
     var lottoMaxNumbers by remember { mutableStateOf(generateRandomNumbers(7, 50).sorted()) }
     var lotto649Numbers by remember { mutableStateOf(generateRandomNumbers(6, 50).sorted()) }
 
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // LottoMax Button
-        Button(
-            onClick = { lottoMaxNumbers = generateRandomNumbers(7, 50).sorted() },
-            modifier = Modifier.padding(bottom = 8.dp)
+    Scaffold(
+        bottomBar = { BottomNavigationBar(navController) }
+    ) { innerPadding ->
+        Column(
+            modifier = modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("LottoMax", style = MaterialTheme.typography.titleLarge)
-        }
-        Row(
-            modifier = Modifier.padding(bottom = 16.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            lottoMaxNumbers.forEach { number ->
-                NumberCircle(number)
+            // LottoMax Button
+            Button(
+                onClick = { lottoMaxNumbers = generateRandomNumbers(7, 50).sorted() },
+                modifier = Modifier.padding(bottom = 8.dp)
+            ) {
+                Text("LottoMax", style = MaterialTheme.typography.titleLarge)
             }
-        }
+            Row(
+                modifier = Modifier.padding(bottom = 16.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                lottoMaxNumbers.forEach { number ->
+                    NumberCircle(number)
+                }
+            }
 
-        // Lotto 6/49 Button
-        Button(
-            onClick = { lotto649Numbers = generateRandomNumbers(6, 50).sorted() },
-            modifier = Modifier.padding(bottom = 8.dp)
-        ) {
-            Text("Lotto 6/49", style = MaterialTheme.typography.titleLarge)
-        }
-        Row(
-            modifier = Modifier.padding(bottom = 16.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            lotto649Numbers.forEach { number ->
-                NumberCircle(number)
+            // Lotto 6/49 Button
+            Button(
+                onClick = { lotto649Numbers = generateRandomNumbers(6, 50).sorted() },
+                modifier = Modifier.padding(bottom = 8.dp)
+            ) {
+                Text("Lotto 6/49", style = MaterialTheme.typography.titleLarge)
+            }
+            Row(
+                modifier = Modifier.padding(bottom = 16.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                lotto649Numbers.forEach { number ->
+                    NumberCircle(number)
+                }
             }
         }
     }
 }
+
 
 
 @Composable

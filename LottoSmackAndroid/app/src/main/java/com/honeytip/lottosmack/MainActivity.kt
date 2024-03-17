@@ -15,7 +15,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LottoSmackTheme {
-                // Use a Surface as the container for our screens
                 Surface(color = MaterialTheme.colorScheme.background) {
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "home") {
@@ -23,18 +22,9 @@ class MainActivity : ComponentActivity() {
                         composable("main") { MainScreen(navController) }
                         composable("stats") { StatsScreen(navController) }
                         composable("settings") { SettingsScreen(navController) }
-
-                        // Add other destinations as needed
                     }
                 }
             }
         }
     }
 }
-
-/*UI button
-* Lotto max 7
-* - - - - - - -
-* Random number generate (1-50)
-* design
-* */
